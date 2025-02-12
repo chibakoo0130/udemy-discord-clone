@@ -8,7 +8,7 @@ import GifIcon from '@mui/icons-material/Gif';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import { useAppSelector } from '@/app/hooks';
 import { db } from '@/firebase';
-import { addDoc, collection, CollectionReference, DocumentData, DocumentReference, serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, CollectionReference, DocumentData, serverTimestamp } from 'firebase/firestore';
 import useSubCollection from '@/hooks/useSubCollection';
 
 function Chat() {
@@ -27,7 +27,7 @@ function Chat() {
     const documents: CollectionReference<DocumentData> 
       = collection(db, "channels", String(channelId), "messages");
     
-    const addMessage: DocumentReference<DocumentData> = await addDoc(documents, {
+    await addDoc(documents, {
       message: inputText,
       timestamp: serverTimestamp(),
       user: user,
