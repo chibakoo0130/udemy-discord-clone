@@ -11,6 +11,7 @@ import { useAppSelector } from '@/app/hooks';
 import useCollection from '@/hooks/useCollection';
 import { addDoc, collection } from 'firebase/firestore';
 import Image from 'next/image';
+import { Avatar } from '@mui/material';
 
 const Sidebar = () => {
 
@@ -55,7 +56,11 @@ const Sidebar = () => {
             </div>
             <div className={styles.sidebarFooter}>
                 <div className={styles.sidebarAccount}>
-                    <Image src={user?.photo} alt="" width={50} height={50} onClick={() => auth.signOut()}/>
+                  {user === null ?
+                    <Avatar />
+                  : 
+                    <Image src={user.photo} alt="" width={50} height={50} onClick={() => auth.signOut()}/>
+                    }
                     <div className={styles.accountName}>
                         <h4>{user?.displayName}</h4>
                         <span>#{user?.uid.substring(0, 4)}</span>
