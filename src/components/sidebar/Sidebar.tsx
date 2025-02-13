@@ -10,6 +10,7 @@ import { auth, db } from '@/firebase';
 import { useAppSelector } from '@/app/hooks';
 import useCollection from '@/hooks/useCollection';
 import { addDoc, collection } from 'firebase/firestore';
+import Image from 'next/image';
 
 const Sidebar = () => {
 
@@ -30,10 +31,7 @@ const Sidebar = () => {
     <div className={styles.sidebar}>
       <div className={styles.sidebarLeft}>
         <div className={styles.serverIcon}>
-          <img src="./discordIcon.png" alt=""></img>
-        </div>
-          <div className={styles.serverIcon}>
-        <img src="./vercel.svg" alt=""></img>
+          <Image src="/discordIcon.png" alt="" width={50} height={50}></Image>
         </div>
       </div>
       <div className={styles.sidebarRight}>
@@ -56,7 +54,7 @@ const Sidebar = () => {
             </div>
             <div className={styles.sidebarFooter}>
                 <div className={styles.sidebarAccount}>
-                    <img src={user?.photo} alt="" onClick={() => auth.signOut()}/>
+                    <Image src={user?.photo} alt="" width={50} height={50} onClick={() => auth.signOut()}/>
                     <div className={styles.accountName}>
                         <h4>{user?.displayName}</h4>
                         <span>#{user?.uid.substring(0, 4)}</span>
