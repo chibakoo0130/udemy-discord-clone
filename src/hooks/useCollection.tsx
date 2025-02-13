@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { db } from '@/firebase';
 import { collection, DocumentData, onSnapshot, Query, query } from 'firebase/firestore';
 import { useEffect, useState } from 'react'
@@ -11,7 +12,8 @@ const useCollection = (data: string) => {
 
   const [documents, setDocuments] = useState<Channels[]>([]);
 
-  const results: Query<DocumentData> = query(collection(db, data));
+  const results: Query<DocumentData> = useMemo(() =>
+    query(collection(db, data)), [data]);
 
   useEffect(() => {
     onSnapshot(results, (querySnapshot) => {
@@ -25,7 +27,7 @@ const useCollection = (data: string) => {
       );
       setDocuments(channels);
     });
-  }, []);
+  }, [results]);
   return { documents };
 }
 
