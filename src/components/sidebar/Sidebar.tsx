@@ -33,6 +33,7 @@ const Sidebar = () => {
         <div className={styles.serverIcon}>
           <Image src="/discordIcon.png" alt="" width={50} height={50}></Image>
         </div>
+
       </div>
       <div className={styles.sidebarRight}>
         <div className={styles.sidebarTop}>
