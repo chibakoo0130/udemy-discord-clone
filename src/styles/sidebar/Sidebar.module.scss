@@ -1,7 +1,7 @@
 .sidebar {
     display: flex;
     flex: 0.35;
-    height: 100vh;
+    height: 100dvh;
 
     .sidebarLeft {
         display: flex;
@@ -100,5 +100,17 @@
                 color: #686a6e;
             }
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        height: 768px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        height: 769px;
     }
 }
