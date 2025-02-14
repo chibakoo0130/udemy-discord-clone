@@ -9,6 +9,11 @@
         overflow-y: scroll;
     }
 
+    /* スクロールバー非表示（Chrome・Safari) */
+    .chatMessage::-webkit-scrollbar {
+        display: none;
+    }
+
     .chatInput {
         display: flex;
         align-items: center;
